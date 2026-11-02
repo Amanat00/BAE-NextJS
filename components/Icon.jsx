@@ -1,0 +1,26 @@
+const shapes = {
+ arrow:<><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></>,
+ diagonal:<><path d="M6 18 18 6M8 6h10v10"/></>,
+ down:<path d="m6 9 6 6 6-6"/>,
+ plus:<path d="M12 5v14M5 12h14"/>,
+ minus:<path d="M5 12h14"/>,
+ check:<path d="m5 12 4 4L19 6"/>,
+ x:<path d="M6 6l12 12M18 6 6 18"/>,
+ menu:<path d="M4 7h16M4 12h16M4 17h16"/>,
+ layers:<><rect x="4" y="4" width="11" height="11" rx="2"/><path d="M9 19h10V9"/></>,
+ route:<><circle cx="6" cy="6" r="2"/><circle cx="18" cy="18" r="2"/><path d="M8 6h6a4 4 0 0 1 0 8h-4a4 4 0 0 0 0 8h6"/></>,
+ spark:<><path d="m12 2 1.8 7.2L21 12l-7.2 2.8L12 22l-2.8-7.2L2 12l7.2-2.8L12 2Z"/></>,
+ shield:<><path d="M12 2 4 6v6c0 5 4 8 8 10 4-2 8-5 8-10V6z"/><path d="m9 12 2 2 4-4"/></>,
+ chart:<><path d="M3 20V4M3 20h18"/><path d="m7 16 5-5 4 2 5-8"/></>,
+ clock:<><circle cx="12" cy="12" r="9"/><path d="M12 7v6l4 2"/></>,
+ mail:<><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></>,
+ link:<><path d="M10 14a5 5 0 0 0 7 0l3-3a5 5 0 0 0-7-7l-2 2"/><path d="M14 10a5 5 0 0 0-7 0l-3 3a5 5 0 0 0 7 7l2-2"/></>,
+ user:<><circle cx="12" cy="8" r="4"/><path d="M4 21c0-5 3-7 8-7s8 2 8 7"/></>,
+ settings:<><circle cx="12" cy="12" r="3"/><path d="M4 12h2m12 0h2M12 4v2m0 12v2m-5.7-13.7 1.4 1.4m8.6 8.6 1.4 1.4m0-11.4-1.4 1.4m-8.6 8.6-1.4 1.4"/></>,
+ target:<><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/></>,
+ search:<><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/></>,
+ upload:<><path d="M12 16V3m-5 5 5-5 5 5M4 15v5h16v-5"/></>,
+ code:<path d="m8 6-6 6 6 6m8-12 6 6-6 6m-3-17-3 22"/>,
+ circle:<circle cx="12" cy="12" r="9"/>
+};
+export default function Icon({name='arrow',size=20,className='',strokeWidth=1.8}){return <svg className={className} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={strokeWidth} strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">{shapes[name]||shapes.arrow}</svg>}
