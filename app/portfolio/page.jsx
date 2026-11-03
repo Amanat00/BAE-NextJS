@@ -1,3 +1,118 @@
-import Link from 'next/link';import Icon from '../../components/Icon';import FAQ from '../../components/FAQ';import CTA from '../../components/CTA';import {portfolioConcepts,commonFaq} from '../../data/content';
-export const metadata={title:'Workflows & Implementation Concepts',description:'Explore illustrative implementation concepts for CRM, operations and app integrations.'};
-export default function Portfolio(){return <main id="top"><section className="page-hero portfolio-hero"><div className="wrap title-grid"><div><span className="eyebrow">OUR WORK / EXPLAINED</span><h1>Ideas become useful<br/><em>when systems connect.</em></h1></div><div><p>These examples show how connected business processes can be designed. They are illustrative concepts, not attributed client case studies or promised results.</p></div></div></section><section className="section work-index"><div className="wrap"><div className="section-intro"><span className="eyebrow">01 / EXPLORE THE WORKFLOWS</span><h2>Three ways to make systems work harder.</h2></div>{portfolioConcepts.map((c,i)=><article className={`work-story work-story-${i}`} data-stack key={c.slug}><Link href={`/portfolio/${c.slug}`} className="work-story-image"><img src={c.image} alt={`${c.title} concept image`} loading="lazy"/></Link><div className="work-story-copy"><span className="eyebrow">0{i+1} / {c.category}</span><h2>{c.title}</h2><p>{c.challenge}</p><Link className="text-link" href={`/portfolio/${c.slug}`}>Read the concept <Icon name="diagonal"/></Link></div></article>)}</div></section><section className="section"><div className="wrap editorial-pair"><span className="eyebrow">02 / NO MADE-UP METRICS</span><div><h2>Practical thinking over polished promises.</h2><p>Every organization has different tools, processes and constraints. The ideas shown here explain what could be built; a real engagement includes discovery and measurable success criteria.</p></div></div></section><section className="section section-stripe"><div className="wrap"><span className="eyebrow">03 / OUR DESIGN PRINCIPLES</span><div className="stripe-columns"><div><Icon name="search"/><h3>Understand the current state</h3><p>Locate friction before designing automation.</p></div><div><Icon name="route"/><h3>Make the flow visible</h3><p>Show triggers, systems and owners clearly.</p></div><div><Icon name="shield"/><h3>Build for real operation</h3><p>Plan monitoring and exceptions from the start.</p></div></div></div></section><section className="section soft-panel"><div className="wrap centered-statement"><span className="eyebrow">04 / BEYOND THE EXAMPLES</span><h2>Your business has its own workflow. The solution should be yours, too.</h2><Link className="btn btn-outline" href="/contact">Plan a real use case <Icon name="arrow"/></Link></div></section><FAQ id="portfolio" items={commonFaq}/><CTA title="Have a workflow in mind? Let's map it." tone="dark" variant="framed"/></main>}
+import Link from "next/link";
+import Icon from "../../components/Icon";
+import PortfolioExplorer from "../../components/PortfolioExplorer";
+import { portfolioConcepts } from "../../data/content";
+import styles from "./Portfolio.module.css";
+
+export const metadata = {
+  title: "Our Work",
+  description:
+    "Explore BAE workflow concepts across CRM automation, business processes and application integrations.",
+};
+
+export default function PortfolioPage() {
+  return (
+    <main id="top" className={styles.page}>
+      <section className={styles.hero}>
+        <div className={styles.container}>
+          <h1>
+            Connected systems.
+            <br />
+            <em>Clearer ways of working.</em>
+          </h1>
+
+          <p>
+            Explore how we approach CRM automation, business
+            processes and application integrations—through
+            workflows designed around real operational challenges.
+          </p>
+
+          <a href="#work-library" className={styles.heroButton}>
+            Explore our work
+            <Icon name="down" size={17} />
+          </a>
+        </div>
+      </section>
+
+      <section
+        className={styles.featuredSection}
+        aria-labelledby="featured-title"
+      >
+        <div className={styles.container}>
+          <div className={styles.sectionHeading}>
+            <h2 id="featured-title">
+              A closer look at connected work.
+            </h2>
+
+            <p>
+              Three illustrative approaches to bringing
+              people, processes and software together.
+            </p>
+          </div>
+
+          <div className={styles.featuredGrid}>
+            {portfolioConcepts.map((project) => (
+              <Link
+                href={`/portfolio/${project.slug}`}
+                className={styles.featuredCard}
+                key={project.slug}
+              >
+                <img
+                  src={project.image}
+                  alt={`${project.title} concept illustration`}
+                  loading="lazy"
+                />
+
+                <div className={styles.featuredShade} />
+
+                <span className={styles.featuredBadge}>
+                  WORKFLOW CONCEPT
+                </span>
+
+                <div className={styles.featuredContent}>
+                  <span className={styles.featuredCategory}>
+                    {project.category}
+                  </span>
+
+                  <h3>{project.title}</h3>
+
+                  <span className={styles.featuredAction}>
+                    Explore workflow
+                    <span className={styles.featuredArrow}>
+                      <Icon name="diagonal" size={19} />
+                    </span>
+                  </span>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <PortfolioExplorer projects={portfolioConcepts} />
+
+      <section className={styles.closing}>
+        <div
+          className={`${styles.container} ${styles.closingInner}`}
+        >
+          <h2>
+            What could better-connected
+            <br />
+            <em>work look like for you?</em>
+          </h2>
+
+          <p>
+            Share the tools you use and the process you want
+            to improve. We’ll help you explore a practical
+            starting point.
+          </p>
+
+          <Link href="/contact" className={styles.primaryButton}>
+            Discuss your project
+            <Icon name="diagonal" size={18} />
+          </Link>
+        </div>
+      </section>
+    </main>
+  );
+}
