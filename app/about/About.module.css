@@ -1,0 +1,488 @@
+/* Typography, font and colours inherit from globals.css. */
+
+.page {
+  background: var(--paper);
+  color: var(--ink);
+}
+
+.page h1 {
+  font-size: clamp(35px, 3.6vw, 46px);
+  line-height: 1.13;
+  letter-spacing: -.035em;
+}
+
+.page h2 {
+  font-size: clamp(32px, 3.1vw, 42px);
+  line-height: 1.14;
+  letter-spacing: -.028em;
+}
+
+.page h1,
+.page h2,
+.page h3 {
+  font-weight: 600;
+}
+
+.page p {
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+.hero {
+  padding: 85px 0 0;
+  background: var(--grey);
+}
+
+.heroGrid {
+  display: grid;
+  grid-template-columns: 1.15fr .85fr;
+  align-items: center;
+  gap: 75px;
+  padding-bottom: 48px;
+}
+
+.heroGrid h1 {
+  margin: 0;
+}
+
+.heroCopy {
+  max-width: 455px;
+}
+
+.heroCopy p {
+  margin: 0 0 25px;
+  color: var(--muted);
+}
+
+.primaryButton {
+  background: var(--blue);
+  color: #fff;
+}
+
+.primaryButton:hover {
+  background: var(--orange);
+}
+
+/* Image and statement form a single composition. */
+
+.imageComposition {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 290px;
+  min-height: 360px;
+}
+
+.mainImage,
+.focusImage {
+  position: relative;
+  overflow: hidden;
+  background: var(--navy);
+}
+
+.mainImage img,
+.focusImage img {
+  display: block;
+  width: 100%;
+  height: 115%;
+  object-fit: cover;
+}
+
+.mainImage img {
+  position: absolute;
+  top: -5%;
+  left: 0;
+}
+
+.imageNote {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 30px;
+  padding: 32px;
+  background: var(--blue);
+  color: #fff;
+}
+
+.imageNote > svg {
+  color: #ffba91;
+}
+
+.imageNote p {
+  margin: 0;
+  font-size: 27px;
+  line-height: 1.35;
+  letter-spacing: -.025em;
+}
+
+.imageNote strong {
+  font-weight: 600;
+}
+
+.imageNote > span {
+  color: #d2dcff;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: .08em;
+  line-height: 1.7;
+}
+
+.section {
+  padding: 100px 0;
+}
+
+.purposeGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: start;
+  gap: 85px;
+}
+
+.prose {
+  color: var(--muted);
+}
+
+.prose p {
+  margin: 0 0 22px;
+}
+
+.prose .purposeConclusion {
+  margin: 28px 0 0;
+  padding-left: 20px;
+  border-left: 2px solid var(--orange);
+  color: var(--ink);
+  font-weight: 600;
+}
+
+/* Mission uses a statement rather than another card grid. */
+
+.mission {
+  padding: 65px 0;
+  background: var(--navy);
+  color: #fff;
+}
+
+.missionGrid {
+  display: grid;
+  grid-template-columns: .35fr 1fr;
+  gap: 65px;
+}
+
+.missionGrid > span {
+  align-self: start;
+  margin-top: 8px;
+  color: #ffba91;
+}
+
+.mission h2 {
+  margin-bottom: 22px;
+}
+
+.mission h2 em {
+  color: #b9c8ff;
+}
+
+.mission p {
+  max-width: 630px;
+  margin: 0;
+  color: #cbd5e8;
+}
+
+.principlesGrid {
+  display: grid;
+  grid-template-columns: .85fr 1.15fr;
+  align-items: start;
+  gap: 85px;
+}
+
+.principlesIntro {
+  position: sticky;
+  top: 115px;
+}
+
+.principlesIntro > p {
+  max-width: 360px;
+  margin: 24px 0;
+  color: var(--muted);
+}
+
+.principle {
+  border-top: 1px solid var(--line);
+}
+
+.principle:last-child {
+  border-bottom: 1px solid var(--line);
+}
+
+.principle summary {
+  display: grid;
+  grid-template-columns: 26px minmax(0, 1fr) 22px;
+  align-items: center;
+  gap: 20px;
+  padding: 25px 0;
+  list-style: none;
+  cursor: pointer;
+}
+
+.principle summary::-webkit-details-marker {
+  display: none;
+}
+
+.principle summary:focus-visible {
+  outline: 3px solid var(--orange);
+  outline-offset: 5px;
+}
+
+.index {
+  color: var(--orange);
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.principle h3 {
+  margin: 0;
+  font-size: clamp(23px, 2vw, 28px);
+  line-height: 1.25;
+  letter-spacing: -.025em;
+}
+
+.toggle {
+  display: grid;
+  place-items: center;
+  color: var(--blue);
+  transition: transform .3s var(--ease);
+}
+
+.principle[open] .toggle {
+  transform: rotate(45deg);
+}
+
+.principle[open] h3 {
+  color: var(--blue);
+}
+
+.answer {
+  padding: 0 35px 25px 46px;
+}
+
+.answer p {
+  margin: 0;
+  color: var(--muted);
+}
+
+.principle[open] .answer {
+  animation: answerEnter .35s var(--ease);
+}
+
+.focus {
+  padding: 80px 0;
+  border-top: 1px solid var(--line);
+  background: var(--grey);
+}
+
+.focusGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 75px;
+}
+
+.focusImage {
+  min-height: 460px;
+  border-radius: var(--radius);
+}
+
+.focusImage img {
+  position: absolute;
+  top: -5%;
+  left: 0;
+}
+
+.focusCopy > p {
+  max-width: 470px;
+  margin: 22px 0 28px;
+  color: var(--muted);
+}
+
+.serviceLinks {
+  display: flex;
+  flex-direction: column;
+}
+
+.serviceLinks a {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 18px 0;
+  border-top: 1px solid var(--line);
+  color: var(--ink);
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.5;
+  transition: color .25s ease;
+}
+
+.serviceLinks a:last-child {
+  border-bottom: 1px solid var(--line);
+}
+
+.serviceLinks svg {
+  flex-shrink: 0;
+  color: var(--blue);
+  transition: transform .3s var(--ease);
+}
+
+@keyframes answerEnter {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .serviceLinks a:hover {
+    color: var(--blue);
+  }
+
+  .serviceLinks a:hover svg {
+    transform: translate(3px, -3px);
+  }
+}
+
+@media (max-width: 1100px) {
+  .heroGrid,
+  .purposeGrid,
+  .principlesGrid,
+  .focusGrid {
+    gap: 40px;
+  }
+
+  .imageComposition {
+    grid-template-columns: minmax(0, 1fr) 260px;
+  }
+
+  .imageNote {
+    padding: 27px;
+  }
+}
+
+@media (max-width: 960px) {
+  .hero {
+    padding-top: 65px;
+  }
+
+  .heroGrid,
+  .purposeGrid,
+  .principlesGrid,
+  .focusGrid,
+  .missionGrid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .heroCopy,
+  .principlesIntro > p {
+    max-width: 620px;
+  }
+
+  .principlesIntro {
+    position: static;
+  }
+
+  .section {
+    padding: 75px 0;
+  }
+
+  .mission,
+  .focus {
+    padding-block: 65px;
+  }
+
+  .missionGrid > span {
+    margin: 0;
+  }
+
+  .focusImage {
+    min-height: 350px;
+  }
+}
+
+@media (max-width: 600px) {
+  .hero {
+    padding-top: 45px;
+  }
+
+  .heroGrid {
+    padding-bottom: 35px;
+  }
+
+  .page h1 {
+    font-size: 35px;
+  }
+
+  .page h2 {
+    font-size: 32px;
+  }
+
+  .imageComposition {
+    grid-template-columns: 1fr;
+  }
+
+  .mainImage {
+    min-height: 260px;
+  }
+
+  .imageNote {
+    display: grid;
+    grid-template-columns: 36px 1fr;
+    align-items: start;
+    gap: 18px;
+    padding: 25px;
+  }
+
+  .imageNote p {
+    font-size: 24px;
+  }
+
+  .imageNote > span {
+    grid-column: 2;
+  }
+
+  .section {
+    padding: 60px 0;
+  }
+
+  .principle summary {
+    grid-template-columns: 23px minmax(0, 1fr) 20px;
+    gap: 12px;
+  }
+
+  .principle h3 {
+    font-size: 23px;
+  }
+
+  .answer {
+    padding: 0 0 24px 35px;
+  }
+
+  .focusImage {
+    min-height: 280px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .principle[open] .answer {
+    animation: none;
+  }
+
+  .toggle,
+  .serviceLinks a,
+  .serviceLinks svg {
+    transition: none;
+  }
+}
