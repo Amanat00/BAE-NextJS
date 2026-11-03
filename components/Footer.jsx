@@ -1,2 +1,174 @@
-import Link from 'next/link';import Icon from './Icon';import {services,solutionThemes} from '../data/content';
-export default function Footer(){return <footer className="site-footer"><div className="wrap footer-top"><div className="footer-intro"><Link href="/" className="brand footer-brand"><span className="brand-mark"><Icon name="route" size={23}/></span><span><strong>BAE</strong><small>BUSINESS AUTOMATIONS EXPERT</small></span></Link><h2>Make your systems<br/><em>work together.</em></h2><p>Purpose-built automation and integration for the tools you already use.</p><Link href="/contact" className="btn btn-orange">Start a conversation <Icon name="diagonal" size={17}/></Link></div><div className="footer-cols"><div><h3>Services</h3><Link href="/services">Overview</Link>{services.map(i=><Link key={i.slug} href={`/services/${i.slug}`}>{i.title}</Link>)}</div><div><h3>Solutions</h3><Link href="/solutions">Overview</Link>{solutionThemes.map(i=><Link key={i.slug} href={`/solutions/${i.slug}`}>{i.title}</Link>)}</div><div><h3>Company</h3><Link href="/portfolio">Our work</Link><Link href="/process">Our process</Link><Link href="/about">About</Link><Link href="/team">Expertise</Link><Link href="/contact">Contact</Link></div></div></div><div className="wrap footer-base"><p>© {new Date().getFullYear()} BAE · Business Automations Expert</p><span>Built around clarity, connection and practical automation.</span><a href="#top" aria-label="Back to top" className="up-link"><Icon name="arrow" size={19}/></a></div></footer>}
+import Link from "next/link";
+import Icon from "./Icon";
+import {
+  brand,
+  services,
+  solutionThemes,
+  portfolioConcepts,
+} from "../data/content";
+import styles from "./Footer.module.css";
+
+const companyLinks = [
+  { label: "About BAE", href: "/about" },
+  { label: "Our process", href: "/process" },
+  { label: "Our work", href: "/portfolio" },
+  { label: "Our expertise", href: "/team" },
+  { label: "Contact", href: "/contact" },
+];
+
+export default function Footer() {
+  return (
+    <footer className={styles.footer}>
+
+      {/* MEGA FOOTER */}
+
+      <div className={styles.directory}>
+        <div className="wrap">
+          <div className={styles.brandRow}>
+            <Link
+              href="/"
+              className={styles.brand}
+              aria-label="BAE home"
+            >
+              <span className={styles.brandMark}>
+                <Icon name="route" size={25} />
+              </span>
+
+              <span className={styles.brandText}>
+                <strong>BAE</strong>
+                <small>BUSINESS AUTOMATIONS EXPERT</small>
+              </span>
+            </Link>
+
+            <span className={styles.brandStatement}>
+              Your tools. Your people. Better connected.
+            </span>
+
+            <a href="#top" className={styles.backTop}>
+              Back to top
+              <span>
+                <Icon name="arrow" size={17} />
+              </span>
+            </a>
+          </div>
+
+          <div className={styles.directoryGrid}>
+            {/* INTRODUCTION */}
+
+            <div className={styles.introduction}>
+              <p>
+                Practical automation and integration
+                for the work behind your business.
+              </p>
+
+              <a
+                href={`mailto:${brand.email}`}
+                className={styles.email}
+              >
+                <span>LET’S CONNECT</span>
+
+                <strong>
+                  {brand.email}
+                  <Icon name="diagonal" size={16} />
+                </strong>
+              </a>
+            </div>
+
+            {/* NAVIGATION */}
+
+            <nav
+              className={styles.navigation}
+              aria-label="Footer navigation"
+            >
+              <div className={styles.column}>
+                <h3>Services</h3>
+
+                <ul>
+                  {services.map((service) => (
+                    <li key={service.slug}>
+                      <Link href={`/services/${service.slug}`}>
+                        {service.title}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+
+                <Link
+                  href="/services"
+                  className={styles.overviewLink}
+                >
+                  All services
+                  <Icon name="arrow" size={15} />
+                </Link>
+              </div>
+
+              <div className={styles.column}>
+                <h3>Solutions</h3>
+
+                <ul>
+                  {solutionThemes.map((solution) => (
+                    <li key={solution.slug}>
+                      <Link href={`/solutions/${solution.slug}`}>
+                        {solution.title}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+
+                <Link
+                  href="/solutions"
+                  className={styles.overviewLink}
+                >
+                  All solutions
+                  <Icon name="arrow" size={15} />
+                </Link>
+              </div>
+
+              <div className={styles.column}>
+                <h3>Company</h3>
+
+                <ul>
+                  {companyLinks.map((item) => (
+                    <li key={item.href}>
+                      <Link href={item.href}>{item.label}</Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <div className={styles.column}>
+                <h3>Workflow concepts</h3>
+
+                <ul>
+                  {portfolioConcepts.map((project) => (
+                    <li key={project.slug}>
+                      <Link href={`/portfolio/${project.slug}`}>
+                        {project.title}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+
+                <span className={styles.conceptNote}>
+                  Illustrative design examples.
+                </span>
+              </div>
+            </nav>
+          </div>
+
+          <div className={styles.bottomBar}>
+            <p>
+              © {new Date().getFullYear()} {brand.name}
+              <span> · </span>
+              {brand.fullName}
+            </p>
+
+            <span>
+              Clarity in the process. Connection in the work.
+            </span>
+          </div>
+        </div>
+      </div>
+    </footer>
+  );
+}
