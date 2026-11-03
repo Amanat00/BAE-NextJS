@@ -1,3 +1,151 @@
-import Link from 'next/link';import Icon from '../../components/Icon';import ContactForm from '../../components/ContactForm';import FAQ from '../../components/FAQ';import {services} from '../../data/content';
-export const metadata={title:'Contact BAE',description:'Contact Business Automations Expert for CRM automation, business process automation and workflow integrations.'};
-export default async function Contact({searchParams}){const q=await searchParams;const context=typeof q?.service==='string'?q.service:'';return <main id="top"><section className="page-hero contact-hero"><div className="wrap contact-layout"><div className="contact-intro" data-reveal><span className="eyebrow">TALK TO BAE</span><h1>Let’s get your systems<br/><em>working together.</em></h1><p>Tell us what feels inefficient today. We’ll use that context to discuss a practical place to start.</p><div className="contact-info"><div><Icon name="mail"/><span><strong>Prefer email?</strong><a href="mailto:devstack912@gmaill.com">devstack912@gmaill.com</a></span></div><div><Icon name="clock"/><span><strong>What happens after you write?</strong><small>We review your inquiry and follow up using your contact details.</small></span></div></div><div className="contact-line"><span>ONE MESSAGE.</span><span>ONE CLEAR START.</span></div></div><div className="contact-card"><ContactForm context={context}/></div></div></section><section className="section contact-next"><div className="wrap"><span className="eyebrow">01 / HELP US UNDERSTAND</span><h2>What information helps us help you?</h2><div className="contact-guidance"><div><span>01</span><h3>Your current tools</h3><p>Which CRM, apps or platforms are involved?</p></div><div><span>02</span><h3>The repetitive step</h3><p>Where does someone need to copy, check or chase information?</p></div><div><span>03</span><h3>What better looks like</h3><p>What should happen more reliably once the process is fixed?</p></div></div></div></section><section className="section contact-services"><div className="wrap"><div className="section-intro"><span className="eyebrow">02 / COMMON STARTING POINTS</span><h2>We can help you decide where to begin.</h2></div><div className="related-rail">{services.map(s=><Link key={s.slug} href={`/services/${s.slug}`}><span>{s.eyebrow}</span><h3>{s.title}</h3><Icon name="diagonal"/></Link>)}</div></div></section><section className="section contact-process"><div className="wrap editorial-pair"><div><span className="eyebrow">03 / WHAT HAPPENS NEXT</span><h2>Understand the problem. Explore the fit. Map the next step.</h2></div><div><p>We review the tools and constraints you share, discuss where automation might help, and clarify what would need to be assessed before implementation.</p><p>No fabricated speed guarantees or automatic booking confirmations.</p></div></div></section><FAQ id="contact" items={[["Do I need to know exactly what to automate?","No. Describe what currently takes too much time or creates repeated mistakes. We can help clarify the opportunity."],["Do you provide a quote immediately?","Scope depends on platform access, workflow complexity, data quality and test requirements. We review those first."],["Will the form actually email my inquiry?","The website sends inquiries via a server-side email API once the delivery provider is configured. If it is not configured, the form reports the issue rather than pretending to send."]]}/></main>}
+import Icon from "../../components/Icon";
+import ContactForm from "../../components/ContactForm";
+import { brand } from "../../data/content";
+import styles from "./Contact.module.css";
+
+export const metadata = {
+  title: "Contact BAE",
+  description:
+    "Discuss CRM automation, business workflows and app integrations with BAE.",
+};
+
+export default async function ContactPage({ searchParams }) {
+  const query = await searchParams;
+  const context =
+    typeof query?.service === "string" ? query.service : "";
+
+  return (
+    <main id="top" className={styles.page}>
+      <section className={styles.hero}>
+        <div className={`wrap ${styles.heroGrid}`}>
+          <div>
+            <h1>
+              Good conversations.
+              <br />
+              <em>Better connections.</em>
+            </h1>
+
+            <p>
+              Bring us the workflow that needs attention.
+              We’ll help you find a practical way to
+              connect the pieces.
+            </p>
+
+            <a href="#inquiry" className={styles.jump}>
+              Let’s talk about your project
+              <Icon name="down" size={17} />
+            </a>
+          </div>
+
+          <div className={styles.visual} aria-hidden="true">
+            <div className={styles.visualTop}>
+              <Icon name="route" size={21} />
+              <span>CONNECTING THE DOTS</span>
+            </div>
+
+            <div className={styles.flow}>
+              <span>
+                <Icon name="mail" size={21} />
+                Your challenge
+              </span>
+
+              <i />
+
+              <strong>BAE</strong>
+
+              <i />
+
+              <span>
+                <Icon name="check" size={21} />
+                A clearer next step
+              </span>
+            </div>
+
+            <small>PEOPLE + PROCESS + TECHNOLOGY</small>
+          </div>
+        </div>
+      </section>
+
+      <section id="inquiry" className={styles.inquiry}>
+        <div className={`wrap ${styles.layout}`}>
+          <aside className={styles.aside}>
+            <span className={styles.kicker}>
+              START WITH WHAT YOU KNOW
+            </span>
+
+            <h2>You don’t need a technical brief to begin.</h2>
+
+            <p>
+              Tell us which tools you use, what feels
+              repetitive and what you want to happen instead.
+            </p>
+
+            <div className={styles.topics}>
+              <span>CRM & Automation</span>
+              <span>Business Processes</span>
+              <span>App Integrations</span>
+            </div>
+
+            <a
+              className={styles.email}
+              href={`mailto:${brand.email}`}
+            >
+              <Icon name="mail" size={21} />
+
+              <span>
+                <small>Prefer email?</small>
+                <strong>{brand.email}</strong>
+              </span>
+
+              <Icon name="diagonal" size={17} />
+            </a>
+
+            <div className={styles.next}>
+              <h3>From your message to a next step.</h3>
+
+              <ol>
+                <li>
+                  <span>01</span>
+                  <div>
+                    <strong>Understand the challenge</strong>
+                    <p>
+                      We review the process and tools you share.
+                    </p>
+                  </div>
+                </li>
+
+                <li>
+                  <span>02</span>
+                  <div>
+                    <strong>Clarify the requirements</strong>
+                    <p>
+                      We follow up on the details that matter.
+                    </p>
+                  </div>
+                </li>
+
+                <li>
+                  <span>03</span>
+                  <div>
+                    <strong>Explore the right approach</strong>
+                    <p>
+                      Identify a practical starting point together.
+                    </p>
+                  </div>
+                </li>
+              </ol>
+            </div>
+          </aside>
+
+          <div className={styles.form}>
+            <ContactForm
+              key={context}
+              context={context}
+              compact
+            />
+          </div>
+        </div>
+      </section>
+    </main>
+  );
+}
